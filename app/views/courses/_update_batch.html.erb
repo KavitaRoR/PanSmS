@@ -1,0 +1,18 @@
+<%-# 
+# Developed By Munsoft IT Solutions
+# Developers: ABUBAKAR UMAR PANTAMI, MUSA AHMADU, ALIYU NASIR, USMAN IBN MUHAMMAD
+# Website: http:///wwww.munsoft.com.ng
+# Email: info@munsoft.com.ng -%>
+
+
+<h4 align="center"><%= t('active_batches') %></h4>
+
+<ul id="category-list">
+
+    <% @batch.each do |batch| %>
+      <li class="list<%=cycle('odd', 'even')%>">
+        <div class="category-name"><%= link_to batch.full_name, [batch.course, batch] %></div>
+      </li>
+     <% end %>
+
+</ul>

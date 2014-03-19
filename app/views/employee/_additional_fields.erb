@@ -1,0 +1,33 @@
+<%-# 
+# Developed By Munsoft IT Solutions
+# Developers: ABUBAKAR UMAR PANTAMI, MUSA AHMADU, ALIYU NASIR, USMAN IBN MUHAMMAD
+# Website: http:///wwww.munsoft.com.ng
+# Email: info@munsoft.com.ng -%>
+
+<ul id="category-list">
+  <% unless @additional_details.empty? and @inactive_additional_details.empty? %>
+<% unless @additional_details.empty? %>
+  <li class="listheading"><div class="category-name"><%= t('active_fields') %></div></li>
+    <%- @additional_details.each do |c| -%>
+      <li class="list<%=cycle('odd', 'even')%>">
+        <div class="category-name"><%= c.name %></div>
+        <div class="category-edit"><%= link_to "#{t('edit_text')}", {:action => "edit_additional_details", :id=>c.id} %></div>
+        <div class="category-edit"><%= link_to  "#{t('delete_text')}", {:action => "delete_additional_details", :id=>c.id}, :confirm => "#{t('delete_confirm_msg')}" %></div>
+      </li>
+     <% end %>
+     <% end %>
+    <% unless @inactive_additional_details.empty? %>
+      <li class="listheading"><div class="category-name"> <%= t('inactive_fields') %></div></li>
+      <%- @inactive_additional_details.each do |c| -%>
+        <li class="list<%=cycle('odd', 'even')%>">
+          <div class="category-name"><%= c.name %></div>
+          <div class="category-edit"><%= link_to "#{t('edit_text')}", {:action => "edit_additional_details", :id=>c.id} %></div>
+          <div class="category-edit"><%= link_to "#{t('delete_text')}", {:action => "delete_additional_details", :id=>c.id},:confirm=>"#{t('delete_confirm_msg')}" %></div>
+        </li>
+      <% end %>
+    <% end %>
+  <% else %>
+<p class="flash-msg"><%= t('no_additional_details') %></p>
+  <% end %>
+</ul>
+

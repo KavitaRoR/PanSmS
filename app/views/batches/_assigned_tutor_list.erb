@@ -1,0 +1,22 @@
+<%-# 
+# Developed By Munsoft IT Solutions
+# Developers: ABUBAKAR UMAR PANTAMI, MUSA AHMADU, ALIYU NASIR, USMAN IBN MUHAMMAD
+# Website: http:///wwww.munsoft.com.ng
+# Email: info@munsoft.com.ng -%>
+
+<% unless @assigned_employee.nil? %>
+  <% unless @assigned_employee.empty? %>
+    <li class="heading"> <%= t('currently_assigned') %>: </li>
+    <% @assigned_employee.each do |e| %>
+      <% @employee = Employee.find_by_id(e) %>
+      <% unless @employee.blank? %>
+        <li class="list<%=cycle('even', 'odd')%>">
+          <div class="tutor-name"><%= @employee.first_name %>
+            <%= "(#{EmployeeDepartment.find(@employee.employee_department_id).name})" %></div>
+        </li>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p class="flash-msg"> <%= t('no_employee_assigned') %>.</p>
+  <% end %>
+<% end %>

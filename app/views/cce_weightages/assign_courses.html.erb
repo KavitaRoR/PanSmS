@@ -1,0 +1,48 @@
+<%-# 
+# Developed By Munsoft IT Solutions
+# Developers: ABUBAKAR UMAR PANTAMI, MUSA AHMADU, ALIYU NASIR, USMAN IBN MUHAMMAD
+# Website: http:///wwww.munsoft.com.ng
+# Email: info@munsoft.com.ng -%>
+
+<div id="content-header">
+  <%= image_tag("/images/examination/show_exam.png") %>
+  <h1><%= t('weightages_text') %></h1>
+  <h3><%= t('assign_courses') %></h3>
+  <div id="app-back-button">
+    <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
+  </div>
+</div>
+<div id="inner-tab-menu">
+  <ul>
+
+  </ul>
+</div>
+
+<div id="page-yield">
+  <div id="flash-box">
+    <% unless flash[:notice].nil? %>
+      <p class="flash-msg"> <%= flash[:notice] %> </p>
+    <% end %>
+  </div>
+  <% form_for @weightage do |f| %>
+    <ul id="category-list">
+      <li class="listheading">
+        <div class="heading-name"><%= t('select_courses') %></div>
+        <div class="heading-edit">
+  <%#= "points" %>
+        </div>
+      </li>
+      <% @courses.each do |g| %>
+        <li class="list<%=cycle('odd', 'even')%>">
+          <label>
+            <div class="category-edit"><%= check_box_tag "cce_weightage[course_ids][]", g.id, @weightage.courses.include?(g)%></div>
+            <div class="category-name"><%= g.full_name %> </div>
+          </label>
+        </li>
+      <% end %>
+    </ul>
+    <%= f.submit "", :value => "► #{t('save')}", :class => "submit_button" %>
+  <% end %>
+<%#= check_box_tag "product[category_ids][]", category.id, @product.categories.include?(category) %>
+<%#= category.name %>
+</div>

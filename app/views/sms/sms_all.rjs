@@ -1,0 +1,2 @@
+
+page.replace_html 'sms-box',:text=>"SMS sent across sessions and empoloyee departments."

@@ -1,0 +1,42 @@
+<%-# 
+# Developed By Munsoft IT Solutions
+# Developers: ABUBAKAR UMAR PANTAMI, MUSA AHMADU, ALIYU NASIR, USMAN IBN MUHAMMAD
+# Website: http:///wwww.munsoft.com.ng
+# Email: info@munsoft.com.ng -%>
+
+<% content_for :head do  %>
+  <%= stylesheet_link_tag("observation_groups/show.css") %>
+<% end %>
+<div id="content-header">
+  <%= image_tag("/images/examination/show_exam.png") %>
+  <h1>CCE Grade sets</h1>
+  <h3>Grades</h3>
+  <div id="app-back-button">
+    <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
+  </div>
+</div>
+<div id="inner-tab-menu">
+  <ul>
+    <li><%= link_to_remote "#{t('add_grade')}", :url => { :action => 'new_grade', :id => @grade_set.id } %></li>
+  </ul>
+</div>
+
+<div id="page-yield">
+  <div id="flash-box">
+    <% unless flash[:notice].nil? %>
+      <p class="flash-msg"> <%= flash[:notice] %> </p>
+    <% end %>
+  </div>
+  <div class="bread_crumb">
+    <%= link_to "CCE Grade Set", cce_grade_sets_path %> &raquo;
+    <%= "Grade" %> <%= @grade_set.name %>
+  </div>
+  <div class="title">
+    Name
+    <div class="description">:&nbsp;&nbsp;&nbsp;<%= @grade_set.name %></div>
+  </div>
+  <div id="grades">
+    <%= render :partial=>'grades' %>
+  </div>
+  <div id="modal-box" style="display:none;"></div>
+</div>

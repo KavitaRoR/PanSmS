@@ -1,0 +1,34 @@
+<%-# 
+# Developed By Munsoft IT Solutions
+# Developers: ABUBAKAR UMAR PANTAMI, MUSA AHMADU, ALIYU NASIR, USMAN IBN MUHAMMAD
+# Website: http:///wwww.munsoft.com.ng
+# Email: info@munsoft.com.ng -%>
+<% unless @batches.blank? %>
+  <ul id="category-list">
+    <li class="listheading">
+      <div class="heading-name"><%= t("select_batches") %></div>
+      <div class="heading-edit">
+      </div>
+    </li>
+    <% @batches.each do |b| %>
+      <li class="list<%=cycle('odd', 'even')%>">
+        <label>
+          <div class="category-edit">
+            <%= check_box_tag "course[batch_ids][]", b.id, false%>
+          </div>
+          <div class="category-name">
+            <%= "#{b.full_name}" %>
+          </div>
+        </label>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <ul id="category-list">
+    <li class="listheading">
+      <div class="heading-name"><%= "#{t('no_batches')}" %></div>
+      <div class="heading-edit">
+      </div>
+    </li>
+  </ul>
+<% end %>

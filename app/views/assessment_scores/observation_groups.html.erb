@@ -1,0 +1,45 @@
+<%-# 
+# Developed By Munsoft IT Solutions
+# Developers: ABUBAKAR UMAR PANTAMI, MUSA AHMADU, ALIYU NASIR, USMAN IBN MUHAMMAD
+# Website: http:///wwww.munsoft.com.ng
+# Email: info@munsoft.com.ng -%>
+
+<% content_for :head do  %>
+  <%= stylesheet_link_tag("assessment_scores/fa_groups.css") %>
+<% end %>
+<div id="content-header">
+  <%= image_tag("/images/examination/show_exam.png") %>
+  <h1>Co-Scolastic Scores</h1>
+  <h3>Select a criteria</h3>
+  <div id="app-back-button">
+    <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
+  </div>
+</div>
+<div id="page-yield">
+  <% unless @observation_groups.empty?  %>
+
+
+    <ul id="category-list">
+      <li class="listheading">
+        <div class="heading-name">Select a criteria</div>
+        <div class="heading-edit">
+        </div>
+      </li>
+      <% @observation_groups.each do |og| %>
+        <li class="list<%=cycle('odd', 'even')%>">
+          <label>
+            <div class="category-name">
+              <%= link_to "#{og.name} - #{og.desc}", observation_scores_path(:batch_id=>@batch.id,:observation_group_id=>og.id)  %>
+            </div>
+          </label>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+  <ul id="category-list">
+      <li class="listheading">
+        <div class="heading-name">No Co-Scholastic items assigned to the batch.</div>
+      </li>
+    </ul>
+  <% end %>
+</div>

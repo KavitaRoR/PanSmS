@@ -1,0 +1,11 @@
+#List of files updated on 15th March 2014.
+  * Added method remarks_constant and comments in /app/controllers/exam_controller.rb.
+  * Updated method save_scores in /app/controllers/exams_controller.rb.
+  * Updated file /app/views/exam/_exam_wise_report.erb.
+  * Updated file /app/views/exam/generated_report_pdf.erb.
+  * Updated file /app/views/exams/show.html.erb.
+  * Added /public/images/examination/signature/Director.png
+  * Added /public/images/examination/signature/Exam Officer.png
+  * Added /public/images/examination/signature/HeadmASTER.png
+  * Added /public/images/examination/signature/Principal_Signatue.png
+

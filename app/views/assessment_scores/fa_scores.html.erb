@@ -1,0 +1,43 @@
+<%-# 
+# Developed By Munsoft IT Solutions
+# Developers: ABUBAKAR UMAR PANTAMI, MUSA AHMADU, ALIYU NASIR, USMAN IBN MUHAMMAD
+# Website: http:///wwww.munsoft.com.ng
+# Email: info@munsoft.com.ng -%>
+
+<div id="content-header">
+  <%= image_tag("/images/examination/show_exam.png") %>
+  <h1>FA Scores</h1>
+  <h3>Enter Grades</h3>
+  <div id="app-back-button">
+    <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
+  </div>
+</div>
+<div id="page-yield">
+  <div id="flash-box">
+    <% unless flash[:notice].nil? %>
+      <p class="flash-msg"> <%= flash[:notice] %> </p>
+    <% end %>
+  </div>
+  <% unless flash[:warn_notice].nil? %>
+    <div id="errorExplanation" class="errorExplanation"><%= flash[:warn_notice] %> </div>
+  <% end %>
+
+  <div id="student_list"><%= render :partial=>'student_list' %></div>
+  <div id="fa_sheet"><%= render :partial=>'fa_sheet' %></div>
+
+
+</div>
+<script type="text/javascript">
+  function set_active(){
+    $$('.active-link').each(function(e){
+      e.removeClassName('active-link');
+    });
+    this.addClassName('active-link')
+  }
+  
+  document.observe("dom:loaded", function() {
+    $$('.student-link').invoke('observe','click',draw_report);
+    $$('.student-link').invoke('observe','click',set_active);
+    set_active.call($('<%=@student.id%>'))
+  });
+</script>

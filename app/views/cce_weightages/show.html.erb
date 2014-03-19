@@ -1,0 +1,45 @@
+<%-# 
+# Developed By Munsoft IT Solutions
+# Developers: ABUBAKAR UMAR PANTAMI, MUSA AHMADU, ALIYU NASIR, USMAN IBN MUHAMMAD
+# Website: http:///wwww.munsoft.com.ng
+# Email: info@munsoft.com.ng -%>
+
+<% content_for :head do  %>
+  <%= stylesheet_link_tag("observation_groups/show.css") %>
+<% end %>
+<div id="content-header">
+  <%= image_tag("/images/examination/show_exam.png") %>
+  <h1>CCE Weightages</h1>
+  <h3>Assigned courses</h3>
+  <div id="app-back-button">
+    <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
+  </div>
+</div>
+<div id="inner-tab-menu">
+  <ul>
+  </ul>
+</div>
+
+<div id="page-yield">
+  <div id="flash-box">
+    <% unless flash[:notice].nil? %>
+      <p class="flash-msg"> <%= flash[:notice] %> </p>
+    <% end %>
+  </div>
+  <div class="bread_crumb">
+    <%= link_to t('cce_weightages'), cce_weightages_path %> &raquo;
+    <%= "#{@weightage.weightage}(#{@weightage.criteria_type})" %>
+  </div>
+  <div class="title">
+    <%= t("weightage_text") %>
+    <div class="description">:&nbsp;&nbsp;&nbsp;<%= @weightage.weightage %></div>
+  </div>
+  <div class="title">
+    <%= t("criteria_type") %>
+    <div class="description">:&nbsp;&nbsp;&nbsp;<%= @weightage.criteria_type %></div>
+  </div>
+  <div id="courses">
+    <%= render  :partial=>'courses' %>
+  </div>
+  <div id="modal-box" style="display:none;"></div>
+</div>

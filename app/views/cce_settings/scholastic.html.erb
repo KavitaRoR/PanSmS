@@ -1,0 +1,40 @@
+<%-# 
+# Developed By Munsoft IT Solutions
+# Developers: ABUBAKAR UMAR PANTAMI, MUSA AHMADU, ALIYU NASIR, USMAN IBN MUHAMMAD
+# Website: http:///wwww.munsoft.com.ng
+# Email: info@munsoft.com.ng -%>
+
+<% content_for :head do  %>
+  <%= stylesheet_link_tag 'exam/index.css' %>
+<% end %>
+<div id="content-header">
+  <%= image_tag("/images/examination/show_exam.png") %>
+  <h1>CCE Settings</h1>
+  <h3>Scholastic Settings</h3>
+  <div id="app-back-button">
+    <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
+  </div>
+</div>
+
+<div id="page-yield">
+
+  <% unless flash[:notice].nil? %>
+    <p class="flash-msg"> <%= flash[:notice] %> </p>
+  <% end %>
+
+  <div class="box">
+
+    <div class="link-box">
+      <div class="link-heading"><%= link_to "Formative Assessment Items",:controller=>'fa_groups' %></div>
+      <div class="link-descr">Manage Formative Assessment Items</div>
+    </div>
+
+    <div class="link-box">
+      <div class="link-heading"><%= link_to "Assign FA Items",:controller=>'fa_groups',:action=>"assign_fa_groups" %></div>
+      <div class="link-descr"><%= "Assign Formative Assessment Items to subjects" %></div>
+    </div>
+
+    <div class="extender"></div>
+  </div>
+</div>
+

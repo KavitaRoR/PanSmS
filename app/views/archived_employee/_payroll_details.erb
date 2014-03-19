@@ -1,0 +1,24 @@
+<%-# 
+# Developed By Munsoft IT Solutions
+# Developers: ABUBAKAR UMAR PANTAMI, MUSA AHMADU, ALIYU NASIR, USMAN IBN MUHAMMAD
+# Website: http:///wwww.munsoft.com.ng
+# Email: info@munsoft.com.ng -%>
+
+<% unless @payroll_details.empty? %>
+  <ul class="item-list">
+    <li class="heading"><%= t('basic_payroll_details') %></li>
+    <% @payroll_details.each do |p| %>
+
+      <% @payroll_category=PayrollCategory.find(p.payroll_category_id)  %>
+      <%  unless @payroll_category.status == false %>
+        <li class="list<%=cycle('odd', 'even')%>">
+          <div class="item-name"><%= @payroll_category.name    %></div>
+          <div class="item-edit"><span class="currency-type"><%= @currency_type %></span> <%= p.amount %></div>
+        </li>
+      <% end %>
+
+    <% end %>
+    </ul>
+<% else %>
+  <p class="flash-msg"><%= t('no_payroll_detail_entered') %><%= @employee.first_name%>.</p>
+<% end %>
