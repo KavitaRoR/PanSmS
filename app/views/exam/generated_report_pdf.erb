@@ -253,7 +253,8 @@
 <div class="hor_line"></div>
           <% comm_keys = comments.keys
              comm_keys.each do |kys|
-               @kys = kys if kys.include?(@total_percentage.to_i)
+               
+               @kys = kys if kys.include?(@total_percentage.to_f.to_i)
              end
           %>
        
